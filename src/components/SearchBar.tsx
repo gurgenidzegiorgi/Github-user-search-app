@@ -16,6 +16,7 @@ const Form = styled.form`
 		background: #fefefe;
 		box-shadow: ${({ theme }) => theme.boxShadow};
 		background-color: ${({ theme }) => theme.containerBackground};
+		cursor: pointer;
 
 		&::placeholder {
 			color: ${({ theme }) => theme.textColor};
@@ -32,7 +33,7 @@ const Form = styled.form`
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		left: 40%;
+		right: 9.5rem;
 	}
 
 	& svg,
@@ -40,6 +41,7 @@ const Form = styled.form`
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
+		cursor: pointer;
 	}
 
 	& svg {
@@ -58,10 +60,18 @@ const Form = styled.form`
 		background: #0079ff;
 		padding: 1rem 1.4rem;
 		transition: all 0.3s ease;
-		cursor: pointer;
 
 		&:hover {
 			background: #60abff;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		input {
+			padding: 2.2rem 0 2.2rem 5rem;
+
+			&::placeholder {
+				font-size: 1.8rem;
+			}
 		}
 	}
 `;
@@ -89,7 +99,6 @@ const SearchBar = ({ user, setUser }) => {
 			return;
 		} else {
 			handleSearch();
-			console.log(user);
 		}
 	};
 	return (
