@@ -1,30 +1,78 @@
-# React + TypeScript + Vite
+# GitHub User Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [GitHub User Search App](#github-user-search-app)
+  - [Project Preview](#Project-Preview)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Project Structure](#project-structure)
+  - [Getting Started](#getting-started)
+  - [Contributing](#contributing)
+  - [Author](#author)
 
-Currently, two official plugins are available:
+## Project Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![App Screenshot](./src/assets/images/preview.jpg "Screenshot")
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Search:** Enter a GitHub username to search for and retrieve user information.
+- **Theme Toggle:** Toggle between light and dark themes for a personalized experience.
+- **Responsive Design:** The app is designed to be accessible and usable on various devices.
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- React: A JavaScript library for building user interfaces.
+- Styled Components: CSS-in-JS library for styling React components.
+- Axios: A promise-based HTTP client for making requests to the GitHub API.
+
+## Project Structure
+
+The project is organized into components, styles, and utility functions. Here's a brief overview:
+
+- **components:** Contains React components used to build the UI.
+- **themes.tsx:** Defines light and dark themes using Styled Components.
+- **App.tsx:** Main component that orchestrates the app's functionality.
+- **Button.tsx:** Button component for UI interactions.
+- **Toggler.tsx:** Component for toggling between light and dark themes.
+- **InputDiv.tsx:** Component for handling user input and search functionality.
+- **UserInfo.tsx:** Component for displaying user information.
+- **UserContainer.tsx:** Styled component for the user container.
+- **GlobalStyles.tsx:** Global styles for the app.
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/gurgenidzegiorgi/Github-user-search-app.git
+
+cd Github-user-search-app
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install dependencies:
+
+```bash
+pnpm install
+```
+
+3. Run the app:
+
+```bash
+pnpm run dev
+```
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: git checkout -b feature/my-feature.
+3. Commit your changes: git commit -m 'Add some feature'.
+4. Push to the branch: git push origin feature/my-feature.
+5. Submit a pull request.
+
+## Author
+
+- GitHub Repo - [Github user search app](https://github.com/gurgenidzegiorgi/Github-user-search-app)
+- Live URL - [Netlify](github-user-search-app-g-gurgenidze.netlify.app)
+- Author - [Giorgi Gurgenidze](https://www.linkedin.com/in/george-gurgenidze-5801501a0/)
