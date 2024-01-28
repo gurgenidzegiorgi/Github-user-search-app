@@ -3,15 +3,15 @@ import styled from "styled-components";
 
 const UserContainer = styled.div`
 	padding: 3.3rem 2.4rem 5rem 2.4rem;
-	margin: 1.6rem 0 8rem 0;
+	margin-top: 1.6rem;
 	border-radius: 1.5rem;
 	background-color: ${({ theme }) => theme.containerBackground};
 	box-shadow: ${({ theme }) => theme.boxShadow};
 
-	& .wrapper {
-		& .desktop-img {
-			display: none;
-		}
+	.desktop-img {
+		display: none;
+		width: 11.7rem;
+		border-radius: 50%;
 	}
 
 	& .title-div {
@@ -34,7 +34,7 @@ const UserContainer = styled.div`
 		}
 		& .login {
 			color: #0079ff;
-			font-size: 1.6rem;
+			font-size: 1.3rem;
 			font-weight: 400;
 		}
 	}
@@ -75,15 +75,11 @@ const UserContainer = styled.div`
 				align-items: center;
 				gap: 1.3rem;
 			}
-			& a,
-			& p {
-				font-size: 1.3rem;
-				font-weight: 400;
-			}
 
 			& a {
 				position: relative;
 				text-decoration: none;
+				cursor: pointer;
 
 				&::before {
 					content: "";
@@ -101,26 +97,71 @@ const UserContainer = styled.div`
 			}
 		}
 	}
-	& .font-size-m {
+	.text-font-size {
 		font-size: 1.3rem;
 	}
 
 	& .font-400 {
 		font-weight: 400;
 	}
-	& .font-700 {
-		font-weight: 700;
-	}
 	& .disable {
 		opacity: 0.5;
+	}
+	@media screen and (min-width: 768px) {
+		margin-top: 2.4rem;
+		padding: 4rem;
+
+		.text-font-size {
+			font-size: 1.5rem;
+		}
+
+		.title-div {
+			img {
+				width: 11.7rem;
+			}
+			h2 {
+				font-size: 2.6rem;
+			}
+			.login {
+				font-size: 1.6rem;
+			}
+		}
+		.amounts-container {
+			h4 {
+				font-size: 1.3rem;
+			}
+			p {
+				font-size: 2.2rem;
+			}
+		}
+
+		.links-container {
+			flex-direction: unset;
+			justify-content: space-between;
+		}
+	}
+	@media screen and (min-width: 1440px) {
+		display: flex;
+		align-items: flex-start;
+		gap: 3.7rem;
+		padding: 4.8rem;
+
+		.title-div {
+			img {
+				display: none;
+			}
+		}
+		.desktop-img {
+			display: block;
+		}
 	}
 `;
 
 const UserInfo = ({ user }) => {
 	return (
 		<UserContainer>
-			<div className="wrapper">
-				<img className="desktop-img" src={user?.avatar_url} alt="avatar" />
+			<img className="desktop-img" src={user?.avatar_url} alt="avatar" />
+			<div>
 				<div className="title-div">
 					<img src={user?.avatar_url} alt="avatar" />
 					<div>
@@ -128,7 +169,7 @@ const UserInfo = ({ user }) => {
 							<h2>{user?.name}</h2>
 							<h3 className="login"> @{user?.login} </h3>
 						</span>
-						<p className=" font-size-m">
+						<p className="text-font-size">
 							Joined{" "}
 							{new Date(user?.created_at).toLocaleDateString("en-GB", {
 								year: "numeric",
@@ -138,7 +179,9 @@ const UserInfo = ({ user }) => {
 						</p>
 					</div>
 				</div>
-				<p className="font-size-m">{user?.bio ?? "This profile has no bio"}</p>
+				<p className="text-font-size">
+					{user?.bio ?? "This profile has no bio"}
+				</p>
 				<div className="amounts-container">
 					<div className="amount-div">
 						<h4>Repos</h4>
@@ -155,16 +198,18 @@ const UserInfo = ({ user }) => {
 				</div>
 				<div className="links-container">
 					<span>
-						<div className={` ${!user?.location ? "disable" : ""}`}>
+						<div className={`${!user?.location ? "disable" : ""}`}>
 							<svg height="20" width="14" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M12.797 3.425C11.584 1.33 9.427.05 7.03.002a7.483 7.483 0 00-.308 0C4.325.05 2.17 1.33.955 3.425a6.963 6.963 0 00-.09 6.88l4.959 9.077.007.012c.218.38.609.606 1.045.606.437 0 .828-.226 1.046-.606l.007-.012 4.96-9.077a6.963 6.963 0 00-.092-6.88zm-5.92 5.638c-1.552 0-2.813-1.262-2.813-2.813s1.261-2.812 2.812-2.812S9.69 4.699 9.69 6.25 8.427 9.063 6.876 9.063z"
 									fill="#4b6a9b"
 								/>
 							</svg>
-							<p>{user?.location ?? "Not available"}</p>
+							<p className="text-font-size font-400">
+								{user?.location ?? "Not available"}
+							</p>
 						</div>
-						<div className={` ${!user?.blog ? "disable" : ""}`}>
+						<div className={`${!user?.blog ? "disable" : ""}`}>
 							<svg height="20" width="20" xmlns="http://www.w3.org/2000/svg">
 								<g fill="#4b6a9b">
 									<path d="M7.404 5.012c-2.355 2.437-1.841 6.482.857 8.273.089.06.207.048.283-.027.568-.555 1.049-1.093 1.47-1.776a.213.213 0 00-.084-.3A2.743 2.743 0 018.878 10.1a2.64 2.64 0 01-.223-1.803c.168-.815 1.043-1.573 1.711-2.274l-.004-.002 2.504-2.555a2.568 2.568 0 013.648-.019 2.6 2.6 0 01.037 3.666l-1.517 1.56a.266.266 0 00-.06.273c.35 1.012.435 2.44.201 3.519-.006.03.031.05.053.028l3.228-3.295c2.062-2.105 2.044-5.531-.04-7.615a5.416 5.416 0 00-7.691.04L7.417 4.998l-.013.014z" />
@@ -172,14 +217,17 @@ const UserInfo = ({ user }) => {
 								</g>
 							</svg>
 							{user?.blog !== (null || "") ? (
-								<a href={user?.blog}> {user?.blog} </a>
+								<a className="text-font-size font-400" href={user?.blog}>
+									{" "}
+									{user?.blog}{" "}
+								</a>
 							) : (
-								<p>Not Available</p>
+								<p className="text-font-size font-400">Not Available</p>
 							)}
 						</div>
 					</span>
 					<span>
-						<div className={` ${!user?.twitter_username ? "disable" : ""}`}>
+						<div className={`${!user?.twitter_username ? "disable" : ""}`}>
 							<svg height="18" width="20" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M20 2.799a8.549 8.549 0 01-2.363.647 4.077 4.077 0 001.804-2.266 8.194 8.194 0 01-2.6.993A4.099 4.099 0 009.75 4.977c0 .324.027.637.095.934-3.409-.166-6.425-1.8-8.452-4.288a4.128 4.128 0 00-.56 2.072c0 1.42.73 2.679 1.82 3.408A4.05 4.05 0 01.8 6.598v.045a4.119 4.119 0 003.285 4.028 4.092 4.092 0 01-1.075.135c-.263 0-.528-.015-.776-.07.531 1.624 2.038 2.818 3.831 2.857A8.239 8.239 0 01.981 15.34 7.68 7.68 0 010 15.285a11.543 11.543 0 006.29 1.84c7.545 0 11.67-6.25 11.67-11.667 0-.182-.006-.357-.015-.53A8.18 8.18 0 0020 2.798z"
@@ -187,20 +235,25 @@ const UserInfo = ({ user }) => {
 								/>
 							</svg>
 							{user?.twitter_username !== null ? (
-								<a href={`https://twitter.com/${user?.twitter_username}`}>
+								<a
+									className="text-font-size font-400"
+									href={`https://twitter.com/${user?.twitter_username}`}
+								>
 									{user?.twitter_username}
 								</a>
 							) : (
-								<p>Not Available</p>
+								<p className="text-font-size font-400">Not Available</p>
 							)}
 						</div>
-						<div className={` ${!user?.company ? "disable" : ""}`}>
+						<div className={`${!user?.company ? "disable" : ""}`}>
 							<svg height="20" width="20" xmlns="http://www.w3.org/2000/svg">
 								<g fill="#4b6a9b">
 									<path d="M10.858 1.558L1.7.167A1.477 1.477 0 00.517.492 1.49 1.49 0 000 1.608v17.559c0 .458.375.833.833.833h2.709v-4.375c0-.808.65-1.458 1.458-1.458h2.083c.809 0 1.459.65 1.459 1.458V20h3.541V3a1.46 1.46 0 00-1.225-1.442zM4.583 12.292h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm4.167 7.5H7.5a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5H7.5a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5H7.5a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5H7.5a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zM18.85 9.035l-5.933-1.242V20h5.625A1.46 1.46 0 0020 18.542V10.46c0-.688-.47-1.274-1.15-1.425zM16.875 17.5h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25zm0-2.5h-1.25a.625.625 0 010-1.25h1.25a.625.625 0 010 1.25z" />
 								</g>
 							</svg>
-							<p>{user?.company !== null ? user?.company : "Not Available"}</p>
+							<p className="text-font-size font-400">
+								{user?.company !== null ? user?.company : "Not Available"}
+							</p>
 						</div>
 					</span>
 				</div>
