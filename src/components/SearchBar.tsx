@@ -76,7 +76,7 @@ const Form = styled.form`
 	}
 `;
 
-const SearchBar = ({ user, setUser }) => {
+const SearchBar = ({ setUser }) => {
 	const [query, setQuery] = useState("");
 	const [isResult, setIsResult] = useState(false);
 

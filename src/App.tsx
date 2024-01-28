@@ -35,7 +35,7 @@ function App() {
 		<Container>
 			<Theme theme={isLight}>
 				<Toggler setIsLightTheme={setIsLightTheme} />
-				<SearchBar user={user} setUser={setUser} />
+				<SearchBar setUser={setUser} />
 				<UserInfo user={user} />
 			</Theme>
 		</Container>
