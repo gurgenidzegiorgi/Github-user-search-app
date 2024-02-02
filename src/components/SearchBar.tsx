@@ -86,9 +86,11 @@ const SearchBar = ({ setUser }) => {
 				.data;
 			setUser(res);
 			setIsResult(false);
+			setQuery("");
 		} catch (err) {
 			if (err) {
 				setIsResult(true);
+				setQuery("");
 				throw new Error(err.message);
 			}
 		}
